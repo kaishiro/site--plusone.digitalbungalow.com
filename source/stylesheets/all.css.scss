@@ -69,12 +69,12 @@ html {
       opacity:0;
       max-height:0;
       overflow:hidden;
-      @include padding(1em 1em 1em 1em);
       font-style:italic;
 
       &:target {
         opacity:1;
         max-height:100px;
+        @include padding(1em 1em 1em 1em);
       }
     }
 
