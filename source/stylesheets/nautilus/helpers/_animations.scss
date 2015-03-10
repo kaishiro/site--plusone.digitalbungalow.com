@@ -1,0 +1,17 @@
+@include keyframes(blink) {
+  0%, 100% {
+    color: tint($color-theme-primary, 100%);
+  }
+  50% {
+    color: tint($color-theme-primary, 50%);
+  }
+}
+
+@include keyframes(rotate) {
+  from {
+    @include transform(rotate(0deg));
+  }
+  to {
+    @include transform(rotate(360deg));
+  }
+}
