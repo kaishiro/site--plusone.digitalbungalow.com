@@ -9,6 +9,13 @@
     n.toggle.listeners();
     n.hover.listeners();
 
+    $('.form .form__input.form__input--select').simpleselect();
+
+    $('.form.form--plusone .form__input.form__input--select[name=who]').on('change', function() {
+      var who = $(this).val();
+      $('.form.form--plusone .form__submit').text("Give " + who + " +1!");
+    });
+
   }),
 
   n = {

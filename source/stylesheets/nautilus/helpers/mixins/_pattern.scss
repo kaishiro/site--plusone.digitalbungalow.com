@@ -4,8 +4,6 @@
  */
 @mixin ⌂-pattern($pattern, $modifier, $context: all) {
 
-  @import "rte";
-
   @if $pattern == 'html' {
 
     @if $modifier == 'default' {
