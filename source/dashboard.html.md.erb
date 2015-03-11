@@ -1,0 +1,26 @@
+---
+layout: default
+layout_class: basic-page
+---
+
+<section class="collection collection--plusones">
+  <div class="colleciton__inner">
+    <div class="collection__content">
+      <h3 class="collection__heading">Plus Ones</h3>
+      <div class="collection__copy">This is a list of the plus ones.</div>
+    </div>
+    <ul class="collection__list">
+      <% data.submissions.submissions.each do | submission | %>
+        <li class="collection__item">
+          <section class="submission">
+            time: <%= submission.created_at %>
+            submitter: <%= submission.data.submitter_name %>
+            submittee: <%= submission.data.submittee_name %>
+            reason: <%= submission.data.reason %>
+            explanation: <%= submission.data.explanation %>
+          </section>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>
