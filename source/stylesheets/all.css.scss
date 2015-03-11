@@ -30,6 +30,11 @@ html {
   }
 }
 
+.main {
+  @include position(relative, null null null null);
+  @include ⌂-layer(roof);
+}
+
 .form {
 
   &.form--plusone {
@@ -151,5 +156,86 @@ html {
       line-height:1.5;
       border-radius: 0;
     }
+  }
+}
+
+.collection {
+
+  &.collection--plusones {
+
+    .collection__inner {
+      @include ⌂-container;
+    }
+  }
+}
+
+.submission {
+  @include margin(2.5em null 2.5em null);
+
+  .submission__inner {
+    @include ⌂-clear;
+    @include position(relative, null null null null);
+  }
+
+  .submission__figure {
+
+    &.submission__figure--submitter {
+      float: left;
+    }
+
+    &.submission__figure--submittee {
+      float: right;
+    }
+  }
+
+  .submission__caption {
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .submission__image {
+    @include size(150px 150px);
+    border-radius: 50%;
+    border:5px solid white;
+  }
+
+  .submission__heading {
+    @include position(absolute, 55px null null 0);
+    @include size(100% null);
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    line-height:2.5rem;
+
+    &:before {
+      @include position(absolute, null null null 175px);
+      @include ⌂-icon(angle-double-right, 20, white);
+      font-size:2.5rem;
+    }
+
+    &:after {
+      @include position(absolute, null 175px null null);
+      @include ⌂-icon(angle-double-right, 20, white);
+      font-size:2.5rem;
+    }
+  }
+
+  .submission__quote {
+    text-align: center;
+    color: white;
+    @include position(relative, -50px null null -160px);
+    @include size(320px null);
+    float: left;
+    clear: both;
+    @include margin(null null null 50%);
+    font-style: italic;
+  }
+
+  .submission__time {
+    font-size: 12px;
+    font-style: normal;
   }
 }
