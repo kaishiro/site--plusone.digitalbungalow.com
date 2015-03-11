@@ -78,6 +78,13 @@ html {
       }
     }
 
+    .form__fieldset {
+
+      &:nth-child(1) {
+        display: none;
+      }
+    }
+
     .form__field {
       @include margin(null null 1em null);
     }

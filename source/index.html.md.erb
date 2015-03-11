@@ -19,54 +19,42 @@ layout_class: basic-page
     <div class="form__message" id="thanks">
       Awesome!  Feeling generous?  Go ahead, give another one...
     </div>
-    <form accept-charset="UTF-8" action="https://formkeep.com/f/7fb87f73b89e" method="POST">
+    <form class="form__form" accept-charset="UTF-8" action="https://formkeep.com/f/7fb87f73b89e" method="POST">
       <fieldset class="form__fieldset">
-        <div class="form__field">
           <input type="hidden" name="utf8" value="✓">
-        </div>
+          <input class="form__input" type="hidden" name="submitter_email">
+          <input class="form__input" type="hidden" name="submittee_email">
       </fieldset>
       <fieldset class="form__fieldset">
         <div class="form__field">
+          <label class="form__label">You?</label>
+          <select class="form__input form__input--select" name="submitter_name">
+            <option value="">Who are you?</option>
+            <% data.employees.each do | employee | %>
+              <option value="<%= employee.name %>" data-email="<%= employee.email %>"><%= employee.name %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="form__field">
           <label class="form__label">Who?</label>
-          <select class="form__input form__input--select" name="who">
-            <option>Wanda Aquino</option>
-            <option>Casey Arnold</option>
-            <option>Scott Berkley</option>
-            <option>Sean Cunningham</option>
-            <option>Jesse Day</option>
-            <option>Alexis Devilling</option>
-            <option>Rob Fitzgibbon</option>
-            <option>Stacey Forman</option>
-            <option>Nick Goodman</option>
-            <option>Emily Greenwood</option>
-            <option>Erin Hegarty</option>
-            <option>Liz Leclair</option>
-            <option>Adam Patterson</option>
-            <option>Gordon Plutsky</option>
-            <option>Alec Schidlovsky</option>
-            <option>Jane Tryder</option>
-            <option>Elli Vandegrift</option>
-            <option>Jesse Vuona</option>
-            <option>Andrew Wardwell</option>
-            <option>Stephen Webster</option>
-            <option>Matthew White</option>
-            <option>Nate Wolfson</option>
-            <option>Jeff Zaccagnini</option>
-            <option>Sierra Zatsky</option>
+          <select class="form__input form__input--select" name="submittee_name">
+            <option value="">Who are you giving props to?</option>
+            <% data.employees.each do | employee | %>
+              <option value="<%= employee.name %>" data-email="<%= employee.email %>"><%= employee.name %></option>
+            <% end %>
           </select>
         </div>
         <div class="form__field">
           <label class="form__label">What?</label>
-          <select class="form__input form__input--select" name="what">
-            <option>Putting the Team First</option>
-            <option>Delivering +1 Internally and Externally</option>
-            <option>Finding the Smartest Solution</option>
-            <option>Embracing the Challenge</option>
+          <select class="form__input form__input--select" name="reason">
+            <% data.plusones.each do | plusone | %>
+              <option value="<%= plusone %>"><%= plusone %></option>
+            <% end %>
           </select>
         </div>
         <div class="form__field">
           <label class="form__label">Why?</label>
-          <textarea class="form__input form__input--textarea" name="why"></textarea>
+          <textarea class="form__input form__input--textarea" name="explanation"></textarea>
         </div>
       </fieldset>
       <fieldset class="form__fieldset">

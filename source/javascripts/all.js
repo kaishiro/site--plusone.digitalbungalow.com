@@ -11,9 +11,28 @@
 
     $('.form .form__input.form__input--select').simpleselect();
 
-    $('.form.form--plusone .form__input.form__input--select[name=who]').on('change', function() {
-      var who = $(this).val();
-      $('.form.form--plusone .form__submit').text("Give " + who + " +1!");
+    $('.form.form--plusone .form__input.form__input--select[name=submitter_name]').on('change', function() {
+      var submitter_name = $(this).val();
+      var submitter_email = $('option:selected', this).data('email');
+      $('.form.form--plusone .form__input[name=submitter_email]').val(submitter_email);
+    });
+
+    $('.form.form--plusone .form__input.form__input--select[name=submittee_name]').on('change', function() {
+      var submittee_name = $(this).val();
+      var submittee_email = $('option:selected', this).data('email');
+      $('.form.form--plusone .form__submit').text("Give " + submittee_name + " +1!");
+      $('.form.form--plusone .form__input[name=submittee_email]').val(submittee_email);
+    });
+
+    $('.form.form--plusone .form__form').submit(function(e) {
+      var submitter_name = $('.form.form--plusone .form__input[name=submitter_name]').val();
+      var submittee_name = $('.form.form--plusone .form__input[name=submittee_name]').val();
+      var reason = $('.form.form--plusone .form__input[name=reason]').val();
+      var explanation = $('.form.form--plusone .form__input[name=explanation]').val();
+      if (submitter_name === "" || submittee_name === "" || reason === "" || explanation === "") {
+        e.preventDefault();
+        alert("You've gotta complete the form yo...");
+      }
     });
 
   }),
