@@ -14,13 +14,14 @@
 
 # Require any local environment variables that exist
 require './env' if File.exists?('env.rb')
+require 'open-uri'
 
 ##
 # Core Configuration
 ##
 
 # Set Environment [:development, :build]
-config[:environment] = :development
+config[:environment] = :build
 
 # Set Directories
 config[:source] = 'source'
@@ -59,9 +60,12 @@ end
 
 # Build Environment
 configure :build do
-  activate :minify_css
-  activate :minify_javascript
-  activate :asset_hash
+
+  # Get latest Form submissions from Formkeep API feed
+  response = open("https://formkeep.com/api/v1/forms/7fb87f73b89e/submissions.json?api_token=#{ENV['FORMKEEP_SECRET']}").read
+  open("./data/submissions.json", "wb") do |file|
+    file.write(response)
+  end
 end
 
 
