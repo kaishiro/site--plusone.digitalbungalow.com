@@ -4,20 +4,31 @@ layout_class: basic-page
 ---
 
 <section class="collection collection--plusones">
-  <div class="colleciton__inner">
+  <div class="collection__inner">
     <div class="collection__content">
-      <h3 class="collection__heading">Plus Ones</h3>
-      <div class="collection__copy">This is a list of the plus ones.</div>
+      <h3 class="collection__heading"></h3>
+      <div class="collection__copy"></div>
     </div>
     <ul class="collection__list">
       <% data.submissions.submissions.each do | submission | %>
         <li class="collection__item">
           <section class="submission">
-            time: <%= submission.created_at %>
-            submitter: <%= submission.data.submitter_name %>
-            submittee: <%= submission.data.submittee_name %>
-            reason: <%= submission.data.reason %>
-            explanation: <%= submission.data.explanation %>
+            <div class="submission__inner">
+              <figure class="submission__figure submission__figure--submitter">
+                <img class="submission__image" src="/images/profiles/<%= submission.data.submitter_name.downcase.gsub(' ','-') %>.jpg" /> 
+                <figcaption class="submission__caption"><%= submission.data.submitter_name %></figcaption>
+              </figure>
+              <h3 class="submission__heading">
+                 <%= submission.data.reason %>
+              </h3>
+              <figure class="submission__figure submission__figure--submittee">
+                <img class="submission__image" src="/images/profiles/<%= submission.data.submittee_name.downcase.gsub(' ','-') %>.jpg" /> 
+                <figcaption class="submission__caption"><%= submission.data.submittee_name %></figcaption>
+              </figure>
+              <blockquote class="submission__quote">
+              <%= submission.data.explanation %><br /><time class="submission__time"><%= Time.parse(submission.created_at).strftime("%m/%d") %></time>
+              </blockquote>
+            </div>
           </section>
         </li>
       <% end %>
